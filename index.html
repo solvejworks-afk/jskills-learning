@@ -3,92 +3,118 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>JSkills Quest | Gamified Learning</title>
+<title>JSkills Learning | School Demo</title>
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<div class="app">
-<header class="top">
-  <div class="brand"><div class="logo">JS</div><div><b>JSkills Quest</b><small>Learning Intelligence • Grades 3–12</small></div></div>
-  <div class="top-actions"><span class="streak">🔥 12 day streak</span><span class="coins">🪙 340</span><button onclick="toggleMode()">☀️</button><button class="profile">A</button></div>
+<header class="topbar">
+  <div class="brand"><div class="logo">JS</div><div><b>JSkills Learning</b><small>Interactive Learning & Assessment</small></div></div>
+  <div id="headerSchool" class="school-chip">Demo School</div>
 </header>
 
-<aside class="sidebar">
-  <button class="nav active" onclick="showTab('home')">🏠 <span>My Quest</span></button>
-  <button class="nav" onclick="showTab('learn')">🧪 <span>Learn & Simulate</span></button>
-  <button class="nav" onclick="showTab('practice')">🎯 <span>Practice Arena</span></button>
-  <button class="nav" onclick="showTab('path')">🗺️ <span>Learning Path</span></button>
-  <button class="nav" onclick="showTab('badges')">🏆 <span>Badges</span></button>
-  <button class="nav" onclick="showTab('school')">🏫 <span>School View</span></button>
-  <div class="side-bottom"><small>Student</small><b>Alex • Grade 6</b><div class="level-line"><span>Level 7</span><span>1,280 XP</span></div><div class="xpbar"><i style="width:64%"></i></div></div>
-</aside>
-
-<main>
-<section id="home" class="tab">
-  <div class="welcome"><div><span class="eyebrow">WELCOME BACK, ALEX</span><h1>Your learning quest continues.</h1><p>Complete missions, master concepts, earn XP and unlock new challenges.</p></div><div class="level-card"><small>CURRENT LEVEL</small><strong>7</strong><span>Scientist</span><div class="xpbar"><i style="width:64%"></i></div><small>1,280 / 2,000 XP</small></div></div>
-
-  <div class="mission-hero">
-    <div class="mission-copy"><span class="tag">TODAY'S FEATURED MISSION</span><h2>⚡ Force & Motion</h2><p>Run a virtual experiment, discover the relationship between force and acceleration, then defeat the mastery challenge.</p><div class="mission-meta"><span>⏱ 12 min</span><span>⭐ +120 XP</span><span>🪙 +30 Coins</span></div><button class="primary" onclick="showTab('learn')">Start Mission →</button></div>
-    <div class="mission-visual"><div class="planet">⚡</div><div class="orbit o1"></div><div class="orbit o2"></div><div class="mission-status">MISSION 01<br><b>IN PROGRESS</b></div></div>
+<!-- LOGIN -->
+<section id="login" class="screen login-screen">
+  <div class="login-left">
+    <div class="eyebrow">SCHOOL LEARNING PLATFORM</div>
+    <h1>Learn. Simulate.<br><span>Assess. Improve.</span></h1>
+    <p>JSkills connects practical simulation learning with continuous assessment, remedial support and competitive learning pathways for Grades 3–12.</p>
+    <div class="login-features"><span>🧪 Interactive simulations</span><span>📊 Competency analytics</span><span>🎯 Personalised practice</span><span>🏆 Olympiad & NEET Foundation</span></div>
   </div>
-
-  <div class="grid3">
-    <div class="panel"><div class="panel-title"><span>🎯 Daily Challenge</span><b>+50 XP</b></div><h3>Can you solve this?</h3><p>If the force doubles and mass stays the same, what happens to acceleration?</p><div class="answers"><button onclick="challenge(this,false)">It halves</button><button onclick="challenge(this,true)">It doubles</button><button onclick="challenge(this,false)">It stays the same</button></div><div id="challengeMsg"></div></div>
-    <div class="panel"><div class="panel-title"><span>📈 Skill Power</span><b>Grade 6</b></div><div class="skills"><label>Concept <b>78</b></label><div class="bar"><i style="width:78%"></i></div><label>Application <b>64</b></label><div class="bar"><i style="width:64%"></i></div><label>Reasoning <b>51</b></label><div class="bar"><i style="width:51%"></i></div><label>Problem solving <b>59</b></label><div class="bar"><i style="width:59%"></i></div></div></div>
-    <div class="panel"><div class="panel-title"><span>🔥 Streak</span><b>12 days</b></div><div class="calendar"><span>✓</span><span>✓</span><span>✓</span><span>✓</span><span>✓</span><span>✓</span><span>✓</span><span>✓</span><span>✓</span><span>✓</span><span>✓</span><span class="today">12</span></div><p class="muted">Complete today's mission to protect your streak.</p></div>
-  </div>
-</section>
-
-<section id="learn" class="tab hidden">
-  <div class="section-head"><div><span class="eyebrow">SIMULATION LAB</span><h2>⚡ Force & Motion</h2><p class="muted">Experiment first. Build understanding through discovery.</p></div><span class="difficulty">LEVEL 2 • EXPLORER</span></div>
-  <div class="learn-grid">
-    <div class="sim-card">
-      <div class="sim-top"><span>🧪 Virtual Experiment</span><span id="experimentXP">+20 XP</span></div>
-      <div class="scene"><div class="sky"></div><div class="ground"></div><div id="car">🚗</div><div class="force-label" id="forceLabel">5 N →</div></div>
-      <div class="control"><label>Force <b id="fVal">5 N</b></label><input id="force" type="range" min="1" max="10" value="5"></div>
-      <div class="control"><label>Mass <b id="mVal">5 kg</b></label><input id="mass" type="range" min="1" max="10" value="5"></div>
-      <div class="experiment-result"><div><small>Acceleration</small><strong id="acc">1.00 m/s²</strong></div><div><small>Discovery</small><strong id="discovery">Change one variable at a time.</strong></div></div>
-      <button class="primary full" onclick="completeExperiment()">Complete Experiment +20 XP</button>
+  <div class="login-card">
+    <div class="login-icon">🏫</div>
+    <h2>School Demo Login</h2>
+    <p class="muted">Enter the school details to start the demonstration.</p>
+    <label>School Name</label><input id="schoolName" value="ABC School" placeholder="Enter school name">
+    <label>School Category</label>
+    <div class="category-grid">
+      <button class="category active" data-category="Matriculation" onclick="selectCategory(this)">Matriculation</button>
+      <button class="category" data-category="CBSE" onclick="selectCategory(this)">CBSE</button>
     </div>
-    <div class="quest-panel">
-      <span class="tag">MISSION CHECKLIST</span>
-      <h3>Scientist's Challenge</h3>
-      <div class="check done">✓ Understand force</div><div class="check done">✓ Run the simulation</div><div class="check">3️⃣ Compare acceleration</div><div class="check">4️⃣ Complete mastery quiz</div><div class="check locked">🔒 Advanced Challenge</div>
-      <div class="reward-box">🏆 Complete all steps<br><b>Unlock: Force Master Badge</b></div>
+    <label>User Role</label>
+    <select id="role"><option>School Administrator</option><option>Teacher</option><option>Student</option></select>
+    <button class="primary wide" onclick="enterSchool()">Enter JSkills Demo →</button>
+    <small class="demo-note">Demo mode • No real student data required</small>
+  </div>
+</section>
+
+<!-- SCHOOL HOME -->
+<section id="schoolHome" class="screen hidden">
+  <div class="page-head">
+    <div><span class="eyebrow">SCHOOL CONSOLE</span><h2 id="welcomeTitle">ABC School</h2><p class="muted"><span id="categoryLabel">Matriculation</span> • Demo learning environment</p></div>
+    <button class="ghost" onclick="logout()">Change School</button>
+  </div>
+  <div class="school-hero">
+    <div><div class="eyebrow light">WELCOME TO JSKILLS</div><h1>Choose a grade to begin.</h1><p>Explore simulations, practise concepts and assess every learner through one continuous platform.</p></div>
+    <div class="hero-stats"><div><b>10</b><small>Demo students</small></div><div><b>4</b><small>Core subjects</small></div><div><b>20</b><small>Questions / assessment</small></div></div>
+  </div>
+  <div class="section-title"><div><span class="eyebrow">GRADE SELECTOR</span><h3>Grades 3–12</h3></div></div>
+  <div class="grade-grid" id="gradeGrid"></div>
+</section>
+
+<!-- SUBJECTS -->
+<section id="subjects" class="screen hidden">
+  <div class="page-head"><div><span class="eyebrow">GRADE <span id="selectedGradeLabel"></span></span><h2 id="subjectsTitle">Choose a learning area</h2><p class="muted" id="subjectSubtitle"></p></div><button class="ghost" onclick="backToGrades()">← Grades</button></div>
+  <div id="neetNotice" class="neet-notice hidden"><b>🧬 NEET Basics available</b><span>For Grade 7, explore the early science foundation pathway that can progressively build toward NEET preparation.</span><button onclick="showNeet()">Explore NEET Basics →</button></div>
+  <div class="subject-grid" id="subjectGrid"></div>
+  <div class="secondary-subjects">
+    <span class="eyebrow">ADVANCED SCIENCE PATHWAY</span>
+    <h3>Senior Secondary Subjects</h3>
+    <div class="advanced-grid">
+      <div class="subject-card muted-card"><span>⚛️</span><b>Physics</b><small>Available from Grade 11</small></div>
+      <div class="subject-card muted-card"><span>🧪</span><b>Chemistry</b><small>Available from Grade 11</small></div>
+      <div class="subject-card muted-card"><span>🌿</span><b>Botany</b><small>Available from Grade 11</small></div>
+      <div class="subject-card muted-card"><span>🫀</span><b>Zoology</b><small>Available from Grade 11</small></div>
     </div>
   </div>
 </section>
 
-<section id="practice" class="tab hidden">
- <div class="section-head"><div><span class="eyebrow">PRACTICE ARENA</span><h2>🎯 Mastery Challenge</h2><p class="muted">Questions adapt to your current competency level.</p></div><span class="difficulty">COMBO × 4</span></div>
- <div class="quiz-wrap"><div id="quiz"></div><button class="primary" onclick="submitQuiz()">Submit Challenge</button><div id="quizResult"></div></div>
+<!-- SIMULATION -->
+<section id="simulation" class="screen hidden">
+  <div class="page-head"><div><span class="eyebrow">SIMULATION LAB</span><h2 id="simTitle">Interactive Simulation</h2><p class="muted" id="simDescription"></p></div><button class="ghost" onclick="backToSubjects()">← Subjects</button></div>
+  <div class="sim-layout">
+    <div class="simulation-card">
+      <div class="sim-header"><span id="simBadge" class="sim-badge">SCIENCE LAB</span><span>Interactive Demo</span></div>
+      <div id="simCanvas" class="sim-canvas"></div>
+      <div id="simControls" class="sim-controls"></div>
+      <div class="observation"><small>LIVE OBSERVATION</small><b id="simObservation">Change the controls and observe what happens.</b></div>
+      <button class="primary" onclick="completeSimulation()">✓ Complete Simulation</button>
+    </div>
+    <div class="sim-side">
+      <div class="info-card"><span class="eyebrow">LEARNING OBJECTIVE</span><h3 id="simObjective">Explore the concept through interaction.</h3><p id="simConcept"></p></div>
+      <div class="info-card"><span class="eyebrow">NEXT STEP</span><h3>20-question Assessment</h3><p>After the simulation, assess the student's understanding using online MCQ or an OMR answer sheet.</p><button class="primary wide" onclick="openAssessment()">Start Assessment →</button></div>
+      <div class="remaining"><b>Other subjects</b><div id="remainingSubjects"></div></div>
+    </div>
+  </div>
 </section>
 
-<section id="path" class="tab hidden">
- <div class="section-head"><div><span class="eyebrow">YOUR LEARNING MAP</span><h2>🗺️ Progression Quest</h2><p class="muted">Your profile evolves from Grade 3 to Grade 12.</p></div></div>
- <div class="map">
-  <div class="map-line"></div>
-  <div class="node complete"><b>3–5</b><strong>Explorer</strong><small>Foundation</small><span>✓</span></div>
-  <div class="node complete"><b>6</b><strong>Scientist</strong><small>Current Grade</small><span>✓</span></div>
-  <div class="node current"><b>6–8</b><strong>Olympiad</strong><small>Foundation</small><span>⭐</span></div>
-  <div class="node locked"><b>9–10</b><strong>Competitive</strong><small>Foundation</small><span>🔒</span></div>
-  <div class="node locked"><b>11–12</b><strong>NEET</strong><small>Preparation</small><span>🔒</span></div>
- </div>
- <div class="path-note"><b>Next milestone:</b> Reach 80% reasoning mastery to unlock the Advanced Olympiad Challenge.</div>
+<!-- ASSESSMENT -->
+<section id="assessment" class="screen hidden">
+  <div class="page-head"><div><span class="eyebrow">ASSESSMENT ENGINE</span><h2 id="assessmentTitle">20-Question Assessment</h2><p class="muted">Choose the best answer or use the OMR answer sheet option.</p></div><button class="ghost" onclick="backToSimulation()">← Simulation</button></div>
+  <div class="assessment-tabs"><button class="tab-btn active" onclick="assessmentMode('online',this)">🖱️ Online MCQ</button><button class="tab-btn" onclick="assessmentMode('omr',this)">📝 OMR Answer Sheet</button></div>
+  <div id="onlineAssessment" class="assessment-panel"><div class="assessment-info"><span>Grade <b id="assessmentGrade"></b></span><span>Subject <b id="assessmentSubject"></b></span><span>Questions <b>20</b></span><span>Time <b>20 min</b></span></div><div id="questions"></div><button class="primary" onclick="submitAssessment()">Submit Assessment & Analyse</button><div id="assessmentResult"></div></div>
+  <div id="omrAssessment" class="assessment-panel hidden">
+    <div class="omr-actions"><div><h3>Printable OMR Answer Sheet</h3><p class="muted">Students can mark answers on paper. In a future production version, the school can upload a scanned answer sheet for automated OMR processing.</p></div><button class="primary" onclick="printOMR()">Print / View Answer Sheet</button></div>
+    <div id="omrSheet" class="omr-sheet"></div>
+    <div class="upload-demo"><b>📷 OMR Scan</b><span>Demo placeholder: upload a scanned answer sheet here in the future for automatic answer recognition.</span><input type="file" accept="image/*,application/pdf" onchange="omrUploaded(this)"></div>
+  </div>
 </section>
 
-<section id="badges" class="tab hidden">
- <div class="section-head"><div><span class="eyebrow">ACHIEVEMENTS</span><h2>🏆 Your Badge Cabinet</h2></div></div>
- <div class="badges"><div class="badge earned"><div>🧪</div><b>Lab Explorer</b><small>Completed 10 simulations</small></div><div class="badge earned"><div>🔥</div><b>12-Day Streak</b><small>12 consecutive learning days</small></div><div class="badge earned"><div>🧠</div><b>Concept Builder</b><small>Mastered 20 concepts</small></div><div class="badge"><div>⚡</div><b>Force Master</b><small>Complete current mission</small></div><div class="badge locked"><div>🏆</div><b>Olympiad Rookie</b><small>Unlock at 80% reasoning</small></div><div class="badge locked"><div>🧬</div><b>NEET Foundation</b><small>Unlock in future grades</small></div></div>
+<!-- MATRIX -->
+<section id="matrix" class="screen hidden">
+ <div class="page-head"><div><span class="eyebrow">SCHOOL ASSESSMENT MATRIX</span><h2>All 10 Students • Learning Lab View</h2><p class="muted">A cohort-level matrix showing performance for the selected simulation/assessment.</p></div><button class="ghost" onclick="backToSubjects()">← Subject Hub</button></div>
+ <div class="matrix-toolbar"><span id="matrixContext"></span><button class="primary" onclick="openStudentDetail()">View selected student</button></div>
+ <div class="matrix-wrap"><table id="matrixTable"><thead><tr><th>Student</th><th>Concept</th><th>Application</th><th>Reasoning</th><th>Simulation</th><th>Assessment</th><th>Level</th><th>Action</th></tr></thead><tbody></tbody></table></div>
+ <div class="matrix-legend"><span>🔴 Remedial</span><span>🟡 Developing</span><span>🟢 Grade-level</span><span>🔵 Advanced</span></div>
 </section>
 
-<section id="school" class="tab hidden">
- <div class="section-head"><div><span class="eyebrow">TEACHER / SCHOOL VIEW</span><h2>🏫 Grade 6 Intervention Dashboard</h2></div></div>
- <div class="school-stats"><div><small>Students</small><b>40</b></div><div><small>Mastered</small><b>18</b><em>45%</em></div><div class="warn"><small>Remedial</small><b>6</b><em>Priority</em></div><div class="advanced-card"><small>Advanced</small><b>4</b><em>Olympiad potential</em></div></div>
- <div class="school-grid"><div class="panel"><h3>Learning levels</h3><div class="level"><span>🔴 Remedial</span><b>6</b></div><div class="level"><span>🟡 Developing</span><b>12</b></div><div class="level"><span>🟢 Grade-level</span><b>18</b></div><div class="level"><span>🔵 Advanced</span><b>4</b></div></div><div class="panel"><h3>Action required</h3><div class="action-card"><b>6 students</b><span>Need targeted Reasoning support</span><button onclick="alert('Demo: Reasoning Level 1 intervention group created.')">Create Intervention</button></div><div class="action-card"><b>4 students</b><span>Recommended for Olympiad Foundation</span><button onclick="alert('Demo: Olympiad Foundation group created.')">Create Advanced Group</button></div></div></div>
+<!-- NEET -->
+<section id="neet" class="screen hidden">
+ <div class="page-head"><div><span class="eyebrow">FOUNDATION PATHWAY</span><h2>🧬 NEET Basics • Grade 7</h2><p class="muted">Early science foundation — not full NEET preparation.</p></div><button class="ghost" onclick="backToSubjects()">← Back</button></div>
+ <div class="neet-hero"><div><h2>Build the science foundation early.</h2><p>Grade 7 students can explore age-appropriate Biology, Chemistry and Physics concepts that strengthen scientific thinking over time.</p></div><div class="neet-score"><small>FOUNDATION READINESS</small><b>42%</b><span>Building</span></div></div>
+ <div class="neet-grid"><div class="path-card"><b>🌿 Biology Foundations</b><span>Cells • Plants • Human body • Classification</span><button onclick="startNeetSubject('Biology')">Explore</button></div><div class="path-card"><b>⚛️ Physics Foundations</b><span>Motion • Force • Energy • Measurement</span><button onclick="startNeetSubject('Physics')">Explore</button></div><div class="path-card"><b>🧪 Chemistry Foundations</b><span>Matter • Mixtures • Atoms • Reactions</span><button onclick="startNeetSubject('Chemistry')">Explore</button></div></div>
 </section>
-</main>
-</div>
+
+<div id="toast" class="toast"></div>
 <script src="script.js"></script>
 </body>
 </html>
