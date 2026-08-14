@@ -1,120 +1,17 @@
-<!doctype html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>JSkills Learning | School Demo</title>
-<link rel="stylesheet" href="styles.css">
-</head>
-<body>
-<header class="topbar">
-  <div class="brand"><div class="logo">JS</div><div><b>JSkills Learning</b><small>Interactive Learning & Assessment</small></div></div>
-  <div id="headerSchool" class="school-chip">Demo School</div>
-</header>
+<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>JSkills Learning Intelligence v5</title><link rel="stylesheet" href="styles.css"></head><body>
+<header><div class="brand"><span class="logo">JS</span><div><b>JSkills</b><small>Learning Intelligence</small></div></div><span id="schoolChip">School Demo</span></header>
+<section id="login" class="screen login"><div class="intro"><span class="eyebrow">SCHOOL LEARNING & DIAGNOSTIC PLATFORM</span><h1>Learn.<br><em>Simulate.</em><br>Assess. Intervene.</h1><p>Simulation-based learning and competency analytics for Grades 3–12.</p><div class="features">🧪 Simulations &nbsp; • &nbsp; 📊 Assessment matrix &nbsp; • &nbsp; 🎯 Intervention &nbsp; • &nbsp; 🏆 Olympiad &nbsp; • &nbsp; 🧬 NEET Foundation</div></div>
+<div class="card login-card"><div class="bigicon">🏫</div><h2>School Login</h2><label>School Name</label><input id="schoolName" value="ABC School"><label>Board / Category</label><div class="choice"><button class="board active" onclick="board(this,'CBSE')">CBSE</button><button class="board" onclick="board(this,'Matriculation')">Matriculation</button></div><label>Role</label><select id="role"><option>School Administrator</option><option>Teacher</option></select><button class="primary wide" onclick="enter()">Enter JSkills →</button><small>Demo mode • sample students only</small></div></section>
 
-<!-- LOGIN -->
-<section id="login" class="screen login-screen">
-  <div class="login-left">
-    <div class="eyebrow">SCHOOL LEARNING PLATFORM</div>
-    <h1>Learn. Simulate.<br><span>Assess. Improve.</span></h1>
-    <p>JSkills connects practical simulation learning with continuous assessment, remedial support and competitive learning pathways for Grades 3–12.</p>
-    <div class="login-features"><span>🧪 Interactive simulations</span><span>📊 Competency analytics</span><span>🎯 Personalised practice</span><span>🏆 Olympiad & NEET Foundation</span></div>
-  </div>
-  <div class="login-card">
-    <div class="login-icon">🏫</div>
-    <h2>School Demo Login</h2>
-    <p class="muted">Enter the school details to start the demonstration.</p>
-    <label>School Name</label><input id="schoolName" value="ABC School" placeholder="Enter school name">
-    <label>School Category</label>
-    <div class="category-grid">
-      <button class="category active" data-category="Matriculation" onclick="selectCategory(this)">Matriculation</button>
-      <button class="category" data-category="CBSE" onclick="selectCategory(this)">CBSE</button>
-    </div>
-    <label>User Role</label>
-    <select id="role"><option>School Administrator</option><option>Teacher</option><option>Student</option></select>
-    <button class="primary wide" onclick="enterSchool()">Enter JSkills Demo →</button>
-    <small class="demo-note">Demo mode • No real student data required</small>
-  </div>
-</section>
+<section id="home" class="screen hidden"><div class="head"><div><span class="eyebrow">SCHOOL CONSOLE</span><h2 id="schoolTitle">ABC School</h2><p id="boardText">CBSE • 2026–27</p></div><button class="ghost" onclick="show('login')">Change School</button></div><div class="hero"><div><span>JSkills Assessment Intelligence</span><h1>Select a grade to begin</h1><p>Choose a grade, open a syllabus topic, run the simulation and assess the cohort.</p></div><div class="stats"><b>10</b><small>Demo learners</small><b>20</b><small>Questions / assessment</small></div></div><h3>Grades 3–12</h3><div class="grades" id="grades"></div></section>
 
-<!-- SCHOOL HOME -->
-<section id="schoolHome" class="screen hidden">
-  <div class="page-head">
-    <div><span class="eyebrow">SCHOOL CONSOLE</span><h2 id="welcomeTitle">ABC School</h2><p class="muted"><span id="categoryLabel">Matriculation</span> • Demo learning environment</p></div>
-    <button class="ghost" onclick="logout()">Change School</button>
-  </div>
-  <div class="school-hero">
-    <div><div class="eyebrow light">WELCOME TO JSKILLS</div><h1>Choose a grade to begin.</h1><p>Explore simulations, practise concepts and assess every learner through one continuous platform.</p></div>
-    <div class="hero-stats"><div><b>10</b><small>Demo students</small></div><div><b>4</b><small>Core subjects</small></div><div><b>20</b><small>Questions / assessment</small></div></div>
-  </div>
-  <div class="section-title"><div><span class="eyebrow">GRADE SELECTOR</span><h3>Grades 3–12</h3></div></div>
-  <div class="grade-grid" id="gradeGrid"></div>
-</section>
+<section id="subjects" class="screen hidden"><div class="head"><div><span class="eyebrow">GRADE <span id="gradeText"></span></span><h2>Learning Hub</h2><p id="subjectInfo"></p></div><button class="ghost" onclick="show('home')">← Grades</button></div><div id="neet" class="notice hidden">🧬 <b>NEET Basics</b> is available from Grade 7 as an early science foundation pathway. <button onclick="show('neetPage')">Explore →</button></div><div class="subjectgrid" id="subjectGrid"></div><div class="senior"><span class="eyebrow">SENIOR SCIENCE / NEET ANALYTICS</span><h3>Physics • Chemistry • Biology</h3><div class="seniorgrid"><div>⚛️ <b>Physics</b><small>Mechanics / Electricity</small></div><div>🧪 <b>Chemistry</b><small>Matter / Reactions</small></div><div>🌿 <b>Botany</b><small>Internal Biology track</small></div><div>🫀 <b>Zoology</b><small>Internal Biology track</small></div></div></div></section>
 
-<!-- SUBJECTS -->
-<section id="subjects" class="screen hidden">
-  <div class="page-head"><div><span class="eyebrow">GRADE <span id="selectedGradeLabel"></span></span><h2 id="subjectsTitle">Choose a learning area</h2><p class="muted" id="subjectSubtitle"></p></div><button class="ghost" onclick="backToGrades()">← Grades</button></div>
-  <div id="neetNotice" class="neet-notice hidden"><b>🧬 NEET Basics available</b><span>For Grade 7, explore the early science foundation pathway that can progressively build toward NEET preparation.</span><button onclick="showNeet()">Explore NEET Basics →</button></div>
-  <div class="subject-grid" id="subjectGrid"></div>
-  <div class="secondary-subjects">
-    <span class="eyebrow">ADVANCED SCIENCE PATHWAY</span>
-    <h3>Senior Secondary Subjects</h3>
-    <div class="advanced-grid">
-      <div class="subject-card muted-card"><span>⚛️</span><b>Physics</b><small>Available from Grade 11</small></div>
-      <div class="subject-card muted-card"><span>🧪</span><b>Chemistry</b><small>Available from Grade 11</small></div>
-      <div class="subject-card muted-card"><span>🌿</span><b>Botany</b><small>Available from Grade 11</small></div>
-      <div class="subject-card muted-card"><span>🫀</span><b>Zoology</b><small>Available from Grade 11</small></div>
-    </div>
-  </div>
-</section>
+<section id="simulation" class="screen hidden"><div class="head"><div><span class="eyebrow">SIMULATION LAB</span><h2 id="simTitle"></h2><p id="simDesc"></p></div><button class="ghost" onclick="show('subjects')">← Subjects</button></div><div class="twocol"><div class="card"><div class="sim" id="sim"></div><div id="controls"></div><div class="observation"><small>LIVE OBSERVATION</small><b id="obs"></b></div><button class="primary" onclick="completeSim()">✓ Simulation Complete</button></div><div class="card"><span class="eyebrow">ASSESSMENT</span><h3>20-question competency test</h3><p>Questions are linked to the simulation and tagged as knowledge, understanding, application, reasoning and problem solving.</p><button class="primary wide" onclick="assessment()">Start Online Assessment →</button><button class="ghost wide" onclick="assessment();setTimeout(()=>omrMode(),100)">View OMR Sheet →</button><hr><span class="eyebrow">REMAINING SUBJECTS</span><div id="remaining"></div></div></div></section>
 
-<!-- SIMULATION -->
-<section id="simulation" class="screen hidden">
-  <div class="page-head"><div><span class="eyebrow">SIMULATION LAB</span><h2 id="simTitle">Interactive Simulation</h2><p class="muted" id="simDescription"></p></div><button class="ghost" onclick="backToSubjects()">← Subjects</button></div>
-  <div class="sim-layout">
-    <div class="simulation-card">
-      <div class="sim-header"><span id="simBadge" class="sim-badge">SCIENCE LAB</span><span>Interactive Demo</span></div>
-      <div id="simCanvas" class="sim-canvas"></div>
-      <div id="simControls" class="sim-controls"></div>
-      <div class="observation"><small>LIVE OBSERVATION</small><b id="simObservation">Change the controls and observe what happens.</b></div>
-      <button class="primary" onclick="completeSimulation()">✓ Complete Simulation</button>
-    </div>
-    <div class="sim-side">
-      <div class="info-card"><span class="eyebrow">LEARNING OBJECTIVE</span><h3 id="simObjective">Explore the concept through interaction.</h3><p id="simConcept"></p></div>
-      <div class="info-card"><span class="eyebrow">NEXT STEP</span><h3>20-question Assessment</h3><p>After the simulation, assess the student's understanding using online MCQ or an OMR answer sheet.</p><button class="primary wide" onclick="openAssessment()">Start Assessment →</button></div>
-      <div class="remaining"><b>Other subjects</b><div id="remainingSubjects"></div></div>
-    </div>
-  </div>
-</section>
+<section id="assessment" class="screen hidden"><div class="head"><div><span class="eyebrow">20-QUESTION ASSESSMENT</span><h2 id="assessTitle"></h2><p>Online MCQ or paper OMR.</p></div><button class="ghost" onclick="show('simulation')">← Simulation</button></div><div class="tabs"><button id="onlineTab" class="tab active" onclick="onlineMode()">Online MCQ</button><button id="omrTab" class="tab" onclick="omrMode()">📝 OMR Answer Sheet</button></div><div id="onlineBox" class="card"><div class="meta">20 Questions • 20 min • Best option</div><div id="questions"></div><button class="primary" onclick="submit()">Submit & Analyse</button><div id="result"></div></div><div id="omrBox" class="card hidden"><div class="omrhead"><div><h3>JSkills OMR Answer Sheet</h3><p>Print, let students mark answers, then scan/upload.</p></div><button class="primary" onclick="printOMR()">Print / View</button></div><div id="omr"></div><div class="upload"><b>📷 Upload scanned answer sheet</b><input type="file" accept="image/*,.pdf" onchange="scan(this)"><span>Demo placeholder for future automated OMR recognition.</span></div></div></section>
 
-<!-- ASSESSMENT -->
-<section id="assessment" class="screen hidden">
-  <div class="page-head"><div><span class="eyebrow">ASSESSMENT ENGINE</span><h2 id="assessmentTitle">20-Question Assessment</h2><p class="muted">Choose the best answer or use the OMR answer sheet option.</p></div><button class="ghost" onclick="backToSimulation()">← Simulation</button></div>
-  <div class="assessment-tabs"><button class="tab-btn active" onclick="assessmentMode('online',this)">🖱️ Online MCQ</button><button class="tab-btn" onclick="assessmentMode('omr',this)">📝 OMR Answer Sheet</button></div>
-  <div id="onlineAssessment" class="assessment-panel"><div class="assessment-info"><span>Grade <b id="assessmentGrade"></b></span><span>Subject <b id="assessmentSubject"></b></span><span>Questions <b>20</b></span><span>Time <b>20 min</b></span></div><div id="questions"></div><button class="primary" onclick="submitAssessment()">Submit Assessment & Analyse</button><div id="assessmentResult"></div></div>
-  <div id="omrAssessment" class="assessment-panel hidden">
-    <div class="omr-actions"><div><h3>Printable OMR Answer Sheet</h3><p class="muted">Students can mark answers on paper. In a future production version, the school can upload a scanned answer sheet for automated OMR processing.</p></div><button class="primary" onclick="printOMR()">Print / View Answer Sheet</button></div>
-    <div id="omrSheet" class="omr-sheet"></div>
-    <div class="upload-demo"><b>📷 OMR Scan</b><span>Demo placeholder: upload a scanned answer sheet here in the future for automatic answer recognition.</span><input type="file" accept="image/*,application/pdf" onchange="omrUploaded(this)"></div>
-  </div>
-</section>
+<section id="matrix" class="screen hidden"><div class="head"><div><span class="eyebrow">TEACHER INTERVENTION CENTRE</span><h2>10-Student Assessment Matrix</h2><p id="matrixInfo"></p></div><button class="ghost" onclick="show('subjects')">← Subject Hub</button></div><div class="matrixcard"><table><thead><tr><th>Student</th><th>Knowledge</th><th>Application</th><th>Reasoning</th><th>Problem Solving</th><th>Overall</th><th>Category</th><th>Teacher Action</th></tr></thead><tbody id="matrix"></tbody></table></div><div class="legend">🔴 Remedial &nbsp; 🟡 Developing &nbsp; 🟢 Grade-level &nbsp; 🔵 Advanced</div><div class="intervention"><div><span class="eyebrow">RECOMMENDED INTERVENTION</span><h3 id="interventionTitle">Analyse the cohort</h3><p id="interventionText">Students are automatically grouped for targeted support or advanced pathways.</p></div><button class="primary" onclick="alert('Demo: intervention group created')">Create Intervention Group</button></div><div class="pathways"><div><b>🔴 Remedial</b><span>Prerequisite simulation + targeted practice + reassessment</span></div><div><b>🟡 Developing</b><span>Adaptive practice + application questions</span></div><div><b>🔵 Olympiad Foundation</b><span>Advanced reasoning and non-routine questions</span></div><div><b>🧬 NEET Foundation</b><span>Biology + Physics + Chemistry readiness tracking</span></div></div></section>
 
-<!-- MATRIX -->
-<section id="matrix" class="screen hidden">
- <div class="page-head"><div><span class="eyebrow">SCHOOL ASSESSMENT MATRIX</span><h2>All 10 Students • Learning Lab View</h2><p class="muted">A cohort-level matrix showing performance for the selected simulation/assessment.</p></div><button class="ghost" onclick="backToSubjects()">← Subject Hub</button></div>
- <div class="matrix-toolbar"><span id="matrixContext"></span><button class="primary" onclick="openStudentDetail()">View selected student</button></div>
- <div class="matrix-wrap"><table id="matrixTable"><thead><tr><th>Student</th><th>Concept</th><th>Application</th><th>Reasoning</th><th>Simulation</th><th>Assessment</th><th>Level</th><th>Action</th></tr></thead><tbody></tbody></table></div>
- <div class="matrix-legend"><span>🔴 Remedial</span><span>🟡 Developing</span><span>🟢 Grade-level</span><span>🔵 Advanced</span></div>
-</section>
-
-<!-- NEET -->
-<section id="neet" class="screen hidden">
- <div class="page-head"><div><span class="eyebrow">FOUNDATION PATHWAY</span><h2>🧬 NEET Basics • Grade 7</h2><p class="muted">Early science foundation — not full NEET preparation.</p></div><button class="ghost" onclick="backToSubjects()">← Back</button></div>
- <div class="neet-hero"><div><h2>Build the science foundation early.</h2><p>Grade 7 students can explore age-appropriate Biology, Chemistry and Physics concepts that strengthen scientific thinking over time.</p></div><div class="neet-score"><small>FOUNDATION READINESS</small><b>42%</b><span>Building</span></div></div>
- <div class="neet-grid"><div class="path-card"><b>🌿 Biology Foundations</b><span>Cells • Plants • Human body • Classification</span><button onclick="startNeetSubject('Biology')">Explore</button></div><div class="path-card"><b>⚛️ Physics Foundations</b><span>Motion • Force • Energy • Measurement</span><button onclick="startNeetSubject('Physics')">Explore</button></div><div class="path-card"><b>🧪 Chemistry Foundations</b><span>Matter • Mixtures • Atoms • Reactions</span><button onclick="startNeetSubject('Chemistry')">Explore</button></div></div>
-</section>
-
-<div id="toast" class="toast"></div>
-<script src="script.js"></script>
-</body>
-</html>
+<section id="neetPage" class="screen hidden"><div class="head"><div><span class="eyebrow">GRADE 7+</span><h2>🧬 NEET Basics / Science Foundation</h2><p>Early foundation only — not full NEET preparation.</p></div><button class="ghost" onclick="show('subjects')">← Back</button></div><div class="neethero"><h2>Build scientific thinking early.</h2><p>Track Biology, Physics and Chemistry foundations and identify students who may benefit from advanced science pathways.</p></div><div class="seniorgrid big"><div><b>🌿 Botany</b><span>Cells • Plants • Photosynthesis</span><button onclick="openSenior('Botany')">Simulation + Questions</button></div><div><b>🫀 Zoology</b><span>Human body • Systems • Classification</span><button onclick="openSenior('Zoology')">Simulation + Questions</button></div><div><b>⚛️ Physics</b><span>Motion • Force • Energy</span><button onclick="openSenior('Physics')">Simulation + Questions</button></div><div><b>🧪 Chemistry</b><span>Matter • Atoms • Changes</span><button onclick="openSenior('Chemistry')">Simulation + Questions</button></div></div></section>
+<div id="toast"></div><script src="script.js"></script></body></html>
