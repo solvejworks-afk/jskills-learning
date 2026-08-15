@@ -1,27 +1,38 @@
-# JSkills Complete Multi-Page Platform
+# JSkills Final v7 — Functional Simulation Build
 
-This build combines the uploaded Grade 3–12 packages and the Teacher Portal into one deployable folder.
+This is the final standalone GitHub Pages demo architecture.
 
-## Page structure
-- `index.html` — school login + grade selection + Teacher Portal link
-- `grade3/index.html` through `grade12/index.html` — separate grade pages
-- `teacher.html` — separate Teacher Portal
-- Each grade retains its uploaded `styles.css`, `script.js`, and where supplied, `data.js`.
+## Separate pages
+- index.html — school login / grade hub
+- grade3/index.html ... grade12/index.html — separate grade pages
+- teacher.html — separate teacher portal
 
-## Navigation
-Every major selection opens a separate HTML page:
-School Home → Grade → Topic/Learning screens within the selected grade package.
-The top navigation on every grade page returns to JSkills Home or opens Teacher Portal.
+## Functional simulations
+Every grade subject topic has a **local HTML5 Canvas simulation**. It does not depend on an iframe or an external site to function.
+Each simulation has interactive controls and a topic-specific visual model.
+
+The grade page then launches a **20-question assessment** related to the selected topic.
+
+## External references
+External providers can be added as enrichment links later (PhET, GeoGebra, HHMI BioInteractive, British Council, etc.). The local simulation is the guaranteed demo fallback.
+
+## Pathway
+Grades 3–5: foundational simulation + assessment.
+Grades 6–9: science pathway adds Physics, Chemistry, Botany, Zoology and early foundation diagnostics.
+Grade 10: CBSE Board + NEET foundation.
+Grades 11–12: senior-secondary Physics, Chemistry, Botany, Zoology + board support.
 
 ## Teacher Portal
-- Lesson plan creation for Grades 3–12
-- Question paper generator
-- Unit / Midterm / Quarterly / Half-Yearly / Annual
-- Grade-wise assessment analysis
+- Grade/lesson plan
+- Question papers: Midterm, Quarterly, Half-Yearly, Annual
+- Grade-wise results
 - Student level categorisation
-- Report card generation and print
+- Report cards + print
 - Whole-class progress
-- Remedial / Developing / Board-ready / Advanced pathways
+- Intervention recommendations
 
 ## GitHub Pages
-Upload the complete contents of this folder to the repository root, then enable GitHub Pages from the repository's Settings → Pages → Deploy from branch.
+Upload the **contents of this folder** to the root of the repository. Do not upload only the ZIP.
+Enable Settings → Pages → Deploy from branch → main → /(root).
+
+This is a demo/prototype. Real student accounts, secure data storage, OMR image processing, school subscriptions and multi-school isolation require a backend/database before production use.
