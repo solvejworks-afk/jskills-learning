@@ -1,20 +1,15 @@
-# JSkills v12–v20 Combined Additional Package
+# JSkills v21 — Integrated Production Demo
 
-This package combines:
-v12 OMR & Offline Assessment
-v13 Student Learning Profile
-v14 School Analytics
-v15 Olympiad Engine
-v16 NEET Foundation Engine
-v17 Report Cards
-v18 Homework & Assignments
-v19 Parent Portal
-v20 Gamification
+This is a fresh integrated package, designed to reduce the broken-link problem caused by stacking independent packages.
 
-Add all files to the root of the existing GitHub Pages repository. Open:
-`v12-20-hub.html`
+Core flow:
+Login → Student/Teacher/Admin/Parent → Grade → Subject → Topic → Real external simulation → 20Q assessment → mastery → teacher intervention.
 
-IMPORTANT:
-These are functional prototype/demo pages. OMR image recognition, secure accounts, persistent multi-school data, real parent/student authentication, subscription billing, and production AI require a backend. Do not represent browser demo data as production data.
+Teacher:
+Teacher Portal → AI lesson planning → assessment → OMR → student profile → school analytics → report card → assignments → Olympiad → NEET Foundation → gamification.
 
-The package is intentionally additive and does not replace existing JSkills files.
+The simulation layer uses external free resources. Providers can change URLs or block iframe embedding; every topic therefore has an Open Full Simulation fallback.
+
+The current package is a GitHub Pages prototype. Secure authentication, persistent multi-school database, real OMR recognition, production AI API calls, parent accounts and subscription billing require a backend.
+
+Upload the CONTENTS of this package to a fresh GitHub repository or replace the existing repository only after backing it up. The package intentionally uses its own unified files and links.
