@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>JSkills School Login</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui,Segoe UI,Arial;background:#f5f7fb;color:#17233b;min-height:100vh;display:grid;place-items:center}
+.shell{width:min(1000px,94%);background:#fff;border:1px solid #dfe5ed;border-radius:20px;overflow:hidden;display:grid;grid-template-columns:1.05fr .95fr;box-shadow:0 20px 60px #17233b12}
+.left{padding:40px;background:linear-gradient(135deg,#17233b,#385278);color:#fff}.logo{width:48px;height:48px;background:#fff;color:#17233b;border-radius:13px;display:grid;place-items:center;font-weight:950;font-size:17px}.ey{font-size:9px;letter-spacing:1.7px;color:#b9c8df;font-weight:900;margin-top:30px}.left h1{font-size:42px;line-height:1.05;margin:9px 0}.left p{font-size:11px;color:#c8d2df;line-height:1.7}.features{margin-top:25px;display:grid;gap:9px}.features span{font-size:9px;background:#ffffff12;border:1px solid #ffffff20;border-radius:9px;padding:10px}
+.right{padding:35px}.right h2{font-size:26px;margin:0 0 6px}.sub{font-size:9px;color:#78859a;margin-bottom:22px}.role{display:grid;grid-template-columns:repeat(3,1fr);gap:7px}.role button{padding:10px;border:1px solid #dce2eb;background:#fff;border-radius:8px;font-size:9px;font-weight:850;cursor:pointer}.role button.active{background:#17233b;color:#fff;border-color:#17233b}
+label{display:block;font-size:9px;font-weight:850;margin:13px 0 6px}input,select{width:100%;padding:11px;border:1px solid #dce2eb;border-radius:8px;font:inherit}button.enter{width:100%;padding:12px;margin-top:17px;border:0;border-radius:9px;background:#17233b;color:#fff;font-size:10px;font-weight:900;cursor:pointer}
+.note{font-size:8px;color:#78859a;line-height:1.5;margin-top:15px}.error{color:#a34848;background:#fff0f0;border:1px solid #f1cccc;padding:9px;border-radius:8px;font-size:8px;margin-top:10px;display:none}
+@media(max-width:720px){.shell{grid-template-columns:1fr}.left{padding:28px}.left h1{font-size:34px}.right{padding:28px}}
+</style></head>
+<body>
+<div class="shell">
+<section class="left"><div class="logo">JS</div><div class="ey">SCHOOL LEARNING & ASSESSMENT PLATFORM</div><h1>Learn.<br>Simulate.<br>Master.</h1><p>JSkills connects curriculum learning, real interactive simulations, assessment, mastery and teacher intervention from Grade 3 to Grade 12.</p>
+<div class="features"><span>🎮 Topic-wise interactive learning</span><span>🧪 Free external simulations + JSkills pathway</span><span>📝 20-question assessments</span><span>📊 Student mastery & intervention</span><span>🎓 Olympiad + NEET foundation pathway</span></div></section>
+<section class="right"><h2>School Login</h2><p class="sub">Demo access for ABC School</p>
+<div class="role"><button class="active" onclick="setRole('student',this)">Student</button><button onclick="setRole('teacher',this)">Teacher</button><button onclick="setRole('admin',this)">School Admin</button></div>
+<label>School</label><input id="school" value="ABC School">
+<label id="idLabel">Student Name / ID</label><input id="user" placeholder="e.g. Student 01">
+<label>Board / Curriculum</label><select id="board"><option>CBSE</option><option>Matriculation</option></select>
+<label id="gradeLabel">Grade</label><select id="grade"></select>
+<div id="error" class="error">Please enter a name or ID.</div>
+<button class="enter" onclick="login()">Continue to JSkills →</button>
+<p class="note">Demo authentication only. For production, this page must connect to secure school accounts and a database. Student records should never be stored only in browser storage.</p>
+</section></div>
+<script>
+let role="student";const $=id=>document.getElementById(id);
+grade.innerHTML=Array.from({length:10},(_,i)=>`<option>Grade ${i+3}</option>`).join("");
+function setRole(r,b){role=r;document.querySelectorAll(".role button").forEach(x=>x.classList.remove("active"));b.classList.add("active");idLabel.textContent=r==="student"?"Student Name / ID":r==="teacher"?"Teacher Name / ID":"Administrator Name / ID";user.placeholder=r==="student"?"e.g. Student 01":r==="teacher"?"e.g. Teacher 01":"e.g. Admin";gradeLabel.style.display=r==="admin"?"none":"block";grade.style.display=r==="admin"?"none":"block"}
+function login(){if(!user.value.trim()){error.style.display="block";return}error.style.display="none";sessionStorage.setItem("jskillsRole",role);sessionStorage.setItem("jskillsSchool",school.value);sessionStorage.setItem("jskillsUser",user.value);sessionStorage.setItem("jskillsBoard",board.value);sessionStorage.setItem("jskillsGrade",grade.value);
+if(role==="student")location.href="index.html#grades";else if(role==="teacher")location.href="teacher-lesson-plan.html";else location.href="teacher.html"}
+</script></body></html>
