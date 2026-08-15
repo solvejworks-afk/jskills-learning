@@ -1,10 +1,27 @@
-# JSkills Learning v5
+# JSkills Complete Multi-Page Platform
 
-School-first simulation and assessment prototype.
+This build combines the uploaded Grade 3–12 packages and the Teacher Portal into one deployable folder.
 
-Flow: School Login → Board → Grade 3–12 → Core Subjects → Topic Simulation → 20 Questions → Online/OMR → Student Results → 10-Student Matrix → Teacher Intervention → Olympiad Foundation / NEET Foundation.
+## Page structure
+- `index.html` — school login + grade selection + Teacher Portal link
+- `grade3/index.html` through `grade12/index.html` — separate grade pages
+- `teacher.html` — separate Teacher Portal
+- Each grade retains its uploaded `styles.css`, `script.js`, and where supplied, `data.js`.
 
-Core subjects: English, Mathematics, Science, Social Science.
-Senior science: Physics, Chemistry, Biology, with Botany/Zoology as internal Biology analytics tracks.
+## Navigation
+Every major selection opens a separate HTML page:
+School Home → Grade → Topic/Learning screens within the selected grade package.
+The top navigation on every grade page returns to JSkills Home or opens Teacher Portal.
 
-Replace the four files in the existing GitHub repository and GitHub Pages will publish the update.
+## Teacher Portal
+- Lesson plan creation for Grades 3–12
+- Question paper generator
+- Unit / Midterm / Quarterly / Half-Yearly / Annual
+- Grade-wise assessment analysis
+- Student level categorisation
+- Report card generation and print
+- Whole-class progress
+- Remedial / Developing / Board-ready / Advanced pathways
+
+## GitHub Pages
+Upload the complete contents of this folder to the repository root, then enable GitHub Pages from the repository's Settings → Pages → Deploy from branch.
